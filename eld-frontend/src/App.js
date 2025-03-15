@@ -40,78 +40,81 @@ function App() {
         <p>Plan your journey with ease and precision</p>
       </header>
 
-      <div className="card">
-        <h2>
-          <Navigation size={24} />
-          Journey Details
-        </h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>
-              <MapPin size={16} />
-              Current Location
-            </label>
-            <input
-              type="text"
-              placeholder="Where are you now?"
-              value={trip.current_location}
-              onChange={(e) => setTrip({ ...trip, current_location: e.target.value })}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label>
-              <MapPin size={16} />
-              Pickup Location
-            </label>
-            <input
-              type="text"
-              placeholder="Enter pickup location"
-              value={trip.pickup_location}
-              onChange={(e) => setTrip({ ...trip, pickup_location: e.target.value })}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label>
-              <MapPin size={16} />
-              Dropoff Location
-            </label>
-            <input
-              type="text"
-              placeholder="Enter dropoff location"
-              value={trip.dropoff_location}
-              onChange={(e) => setTrip({ ...trip, dropoff_location: e.target.value })}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label>
-              <Clock size={16} />
-              Current Cycle Used (Hrs)
-            </label>
-            <input
-              type="number"
-              placeholder="Hours"
-              value={trip.current_cycle_used}
-              onChange={(e) => setTrip({ ...trip, current_cycle_used: e.target.value })}
-              required
-            />
-          </div>
-          <button type="submit" className="button" disabled={isLoading}>
-            {isLoading ? 'Processing...' : 'Plan Trip'}
-          </button>
-        </form>
-      </div>
+      {/* Flex container for form and map */}
+      <div className="flex-container">
+        <div className="card form-card">
+          <h2>
+            <Navigation size={24} />
+            Journey Details
+          </h2>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label>
+                <MapPin size={16} />
+                Current Location
+              </label>
+              <input
+                type="text"
+                placeholder="Where are you now?"
+                value={trip.current_location}
+                onChange={(e) => setTrip({ ...trip, current_location: e.target.value })}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>
+                <MapPin size={16} />
+                Pickup Location
+              </label>
+              <input
+                type="text"
+                placeholder="Enter pickup location"
+                value={trip.pickup_location}
+                onChange={(e) => setTrip({ ...trip, pickup_location: e.target.value })}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>
+                <MapPin size={16} />
+                Dropoff Location
+              </label>
+              <input
+                type="text"
+                placeholder="Enter dropoff location"
+                value={trip.dropoff_location}
+                onChange={(e) => setTrip({ ...trip, dropoff_location: e.target.value })}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>
+                <Clock size={16} />
+                Current Cycle Used (Hrs)
+              </label>
+              <input
+                type="number"
+                placeholder="Hours"
+                value={trip.current_cycle_used}
+                onChange={(e) => setTrip({ ...trip, current_cycle_used: e.target.value })}
+                required
+              />
+            </div>
+            <button type="submit" className="button" disabled={isLoading}>
+              {isLoading ? 'Processing...' : 'Plan Trip'}
+            </button>
+          </form>
+        </div>
 
-      <div className="card">
-        <h2>
-          <ArrowRight size={24} />
-          Route Visualization
-        </h2>
-        {!isFormSubmitted && <p>Your route will appear here after you submit trip details.</p>}
-        <div className="map-container">
-          <Map route={route} />
+        <div className="card map-card">
+          <h2>
+            <ArrowRight size={24} />
+            Route Visualization
+          </h2>
+          {!isFormSubmitted && <p>Your route will appear here after you submit trip details.</p>}
+          <div className="map-container">
+            <Map route={route} />
+          </div>
         </div>
       </div>
 

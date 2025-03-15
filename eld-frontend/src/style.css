@@ -12,6 +12,8 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
 }
 
 .header {
@@ -33,13 +35,35 @@ body {
     color: #d1d5db;
 }
 
+/* Flex container for form and map */
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+@media (min-width: 768px) {
+    .flex-container {
+        flex-direction: row;
+    }
+
+    .form-card {
+        flex: 1;
+    }
+
+    .map-card {
+        flex: 2;
+    }
+}
+
 .card {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 24px;
-    margin-bottom: 24px;
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
 }
 
 .card h2 {
@@ -80,6 +104,8 @@ body {
     color: #fff;
     font-size: 1rem;
     transition: border-color 0.3s ease;
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
 }
 
 .form-group input:focus {
@@ -98,6 +124,8 @@ body {
     border-radius: 12px;
     cursor: pointer;
     transition: background 0.3s ease;
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
 }
 
 .button:hover {
